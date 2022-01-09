@@ -7,7 +7,6 @@ CREATE TABLE IF NOT EXISTS planos (
     plano VARCHAR(50) NOT NULL,
     valor_plano FLOAT(2) NOT NULL
 ) engine=InnoDB;
--- ok planos
 
 CREATE TABLE IF NOT EXISTS usuarios (
 	usuario_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -17,13 +16,11 @@ CREATE TABLE IF NOT EXISTS usuarios (
     data_assinatura DATE,
     FOREIGN KEY (plano_id) REFERENCES planos(plano_id)
 ) engine=InnoDB;
--- ok usuarios
 
 CREATE TABLE IF NOT EXISTS artistas (
 	artista_id INT PRIMARY KEY AUTO_INCREMENT,
     artista VARCHAR(50)
 ) engine=InnoDB;
--- ok artistas
 
 CREATE TABLE IF NOT EXISTS seguindoArtistas (
     usuario_id INT NOT NULL,
@@ -50,7 +47,6 @@ CREATE TABLE IF NOT EXISTS reproducoes (
     FOREIGN KEY (artista_id) REFERENCES artistas(artista_id),
     FOREIGN KEY (album_id) REFERENCES albuns(album_id)
 ) engine=InnoDB;
--- ok reproducoes
 
 CREATE TABLE IF NOT EXISTS historicos (
     usuario_id INT NOT NULL,
@@ -61,7 +57,6 @@ CREATE TABLE IF NOT EXISTS historicos (
     FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
     FOREIGN KEY (reproducao_id) REFERENCES reproducoes(reproducao_id)
 ) engine=InnoDB;
--- ok historicos
 
 INSERT INTO planos (plano, valor_plano) VALUES
     ('gratuito', 0.00),
